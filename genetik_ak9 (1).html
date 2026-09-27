@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genetik Åk 9 – Lär dig inför provet</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#07111f;color:#eef5ff}
+header{padding:28px 20px;text-align:center;background:linear-gradient(135deg,#102d52,#153d70)}
+header h1{margin:0 0 8px;font-size:32px} header p{margin:0;color:#c7d9ef}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:12px;background:#0b1a2d;position:sticky;top:0;z-index:5}
+nav button,.btn{border:0;border-radius:10px;padding:10px 14px;background:#1b3e69;color:white;cursor:pointer;font-weight:bold}
+nav button:hover,.btn:hover{background:#28609b}
+main{max-width:1050px;margin:auto;padding:22px}
+.page{display:none}.page.active{display:block}
+.card{background:#0d2037;border:1px solid #1d3b5d;border-radius:16px;padding:20px;margin:14px 0;box-shadow:0 8px 25px #0003}
+h2{color:#78b8ff} h3{color:#a8d1ff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.term{min-height:145px;cursor:pointer;transition:.2s}.term:hover{transform:translateY(-3px)}
+.answer{display:none;color:#cfe5ff;margin-top:10px}.term.open .answer{display:block}
+.badge{display:inline-block;background:#164d78;padding:5px 9px;border-radius:20px;font-size:12px}
+.progress{height:14px;background:#12263d;border-radius:10px;overflow:hidden}.bar{height:100%;background:#45a4ff;width:0}
+.quizq{font-size:19px;font-weight:bold}.option{display:block;width:100%;margin:8px 0;text-align:left;background:#142d49;color:white;border:1px solid #2b4e73;border-radius:10px;padding:12px;cursor:pointer}.correct{background:#145c45!important}.wrong{background:#69343b!important}
+.flash{min-height:230px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:25px;cursor:pointer}
+.small{color:#a9bdd3;font-size:14px}
+table{width:100%;border-collapse:collapse;margin-top:12px}td,th{border:1px solid #31506e;padding:10px;text-align:center}th{background:#173654}
+select{padding:10px;border-radius:8px;background:#10243a;color:white;border:1px solid #416382}
+footer{text-align:center;color:#8198b0;padding:30px}
+</style>
+</head>
+<body>
+<header>
+<h1>🧬 Genetik Åk 9</h1>
+<p>Din interaktiva plugg-sida inför genetikprovet</p>
+</header>
+
+<nav>
+<button onclick="show('home')">🏠 Start</button>
+<button onclick="show('begrepp')">📚 Begrepp</button>
+<button onclick="show('cell')">🔬 Celldelning</button>
+<button onclick="show('dna')">🧬 DNA & gener</button>
+<button onclick="show('korsning')">🧩 Korsningsschema</button>
+<button onclick="show('flash')">🃏 Flashcards</button>
+<button onclick="show('quiz')">📝 Quiz</button>
+</nav>
+
+<main>
+<section id="home" class="page active">
+<div class="card">
+<h2>🎯 Det här ska du kunna</h2>
+<p>✓ Förklara genetik, gener, kromosomer och DNA</p>
+<p>✓ Förstå mitos och meios</p>
+<p>✓ Förstå dominant och recessivt anlag</p>
+<p>✓ Förstå mutation, klon och genteknik</p>
+<p>✓ Använda korsningsscheman</p>
+<p>✓ Veta hur DNA-analyser används</p>
+<div class="progress"><div id="progress" class="bar"></div></div>
+<p class="small" id="progressText">0% av sidan genomgången</p>
+</div>
+<div class="grid">
+<div class="card"><h3>📚 Begrepp</h3><p>Lär dig alla ord från provlistan.</p><button class="btn" onclick="show('begrepp')">Börja</button></div>
+<div class="card"><h3>🧬 Processer</h3><p>Se mitos och meios steg för steg.</p><button class="btn" onclick="show('cell')">Lär dig</button></div>
+<div class="card"><h3>🧩 Korsningar</h3><p>Träna på genotyper och sannolikheter.</p><button class="btn" onclick="show('korsning')">Träna</button></div>
+<div class="card"><h3>📝 Testa dig</h3><p>Quiz med poäng.</p><button class="btn" onclick="show('quiz')">Starta quiz</button></div>
+</div>
+</section>
+
+<section id="begrepp" class="page">
+<h2>📚 Begrepp</h2><p class="small">Klicka på ett kort för att visa förklaringen.</p>
+<div id="terms" class="grid"></div>
+</section>
+
+<section id="cell" class="page">
+<h2>🔬 Celldelning</h2>
+<div class="card">
+<h3>Mitos – vanlig celldelning</h3>
+<p>En cell delar sig och bildar <b>två genetiskt lika celler</b>. Det används bland annat när kroppen växer och reparerar celler.</p>
+<p><b>Kom ihåg:</b> 1 cell → 2 lika celler.</p>
+</div>
+<div class="card">
+<h3>Meios – reduktionsdelning</h3>
+<p>Meios bildar könsceller. Antalet kromosomer halveras. En cell bildar till slut <b>fyra könsceller</b> med hälften så många kromosomer.</p>
+<p><b>Kom ihåg:</b> 1 cell → 4 könsceller med halvt kromosomantal.</p>
+</div>
+<div class="card">
+<p><b>Interaktiv visualisering:</b></p>
+</div>
+</section>
+
+<section id="dna" class="page">
+<h2>🧬 DNA, gener och kromosomer</h2>
+<div class="card"><h3>DNA</h3><p>DNA är molekylen som innehåller den genetiska informationen. DNA är uppbyggt av byggstenar som kallas <b>nukleotider</b>, med baserna A, T, C och G.</p></div>
+<div class="card"><h3>Gen</h3><p>En gen är ett avsnitt av DNA som innehåller information, till exempel instruktioner för ett protein eller en egenskap.</p></div>
+<div class="card"><h3>Kromosom</h3><p>En kromosom är tätt packat DNA tillsammans med proteiner. Kromosomer finns i cellkärnan i våra kroppsceller.</p></div>
+<div class="card"><h3>Könskromosomer</h3><p>Hos människor är den vanligaste kombinationen <b>XX</b> för kvinnor och <b>XY</b> för män. Äggceller innehåller X, medan spermier kan innehålla X eller Y.</p></div>
+<div class="card"><h3>DNA-analyser används bland annat till</h3><p>Kriminalteknik, släktforskning och vissa medicinska undersökningar.</p></div>
+</section>
+
+<section id="korsning" class="page">
+<h2>🧩 Korsningsschema</h2>
+<div class="card">
+<p>Välj två föräldragenotyper. <b>A</b> är dominant och <b>a</b> är recessivt.</p>
+<label>Förälder 1: <select id="p1"><option>AA</option><option>Aa</option><option>aa</option></select></label>
+<label> Förälder 2: <select id="p2"><option>AA</option><option>Aa</option><option>aa</option></select></label>
+<button class="btn" onclick="cross()">Visa korsning</button>
+<div id="crossResult"></div>
+</div>
+<div class="card">
+<h3>Så tänker du</h3>
+<p>1. Ta reda på vilka könsceller varje förälder kan bilda.</p>
+<p>2. Skriv dem längs kanten av schemat.</p>
+<p>3. Kombinera bokstäverna.</p>
+<p>4. Räkna hur stor andel som får varje genotyp/fenotyp.</p>
+</div>
+</section>
+
+<section id="flash" class="page">
+<h2>🃏 Flashcards</h2>
+<div class="card flash" id="flashcard" onclick="flipCard()">Klicka för att börja</div>
+<div style="text-align:center"><button class="btn" onclick="nextCard()">Nästa kort →</button></div>
+</section>
+
+<section id="quiz" class="page">
+<h2>📝 Genetik-quiz</h2>
+<div class="card">
+<div id="quizBox"></div>
+<p id="score"></p>
+<button class="btn" onclick="restartQuiz()">Starta om</button>
+</div>
+</section>
+</main>
+<footer>Genetik Åk 9 • Plugga lite i taget 🧬</footer>
+
+<script>
+const terms=[
+["Genetik","Läran om hur egenskaper ärvs och hur gener fungerar."],
+["Gen","Ett avsnitt av DNA som innehåller genetisk information."],
+["Mitos","Vanlig celldelning där en cell blir två genetiskt lika celler."],
+["Meios","Reduktionsdelning som bildar könsceller med halvt kromosomantal."],
+["Kromosom","Packat DNA som finns i cellkärnan."],
+["Recessivt anlag","Ett anlag som oftast bara syns när man har två recessiva varianter."],
+["Dominant anlag","Ett anlag som kan synas när bara en dominant variant finns."],
+["Klon","En genetiskt mycket lik eller identisk kopia av en organism/cell."],
+["Urvalsmetoden","Man väljer individer med önskade egenskaper för fortsatt avel/förädling."],
+["Gensax","Ett verktyg för att klippa DNA på bestämda ställen, exempelvis CRISPR."],
+["Genteknik","Teknik där man undersöker eller förändrar DNA."],
+["Genetiska koden","Reglerna för hur DNA-information kopplas till aminosyror och proteiner."],
+["Genterapi","Behandling där genetiskt material används för att försöka behandla en sjukdom."],
+["Intermediär nedärvning","Ingen variant dominerar helt; avkomman kan få en mellanform."],
+["Mutation","En förändring i DNA."],
+["Korsningsförädling","Man korsar organismer med önskade egenskaper för att få avkomma med önskade egenskaper."]
+];
+const termBox=document.getElementById("terms");
+terms.forEach(t=>{termBox.innerHTML+=`<div class="card term" onclick="this.classList.toggle('open')"><span class="badge">${t[0]}</span><div class="answer">${t[1]}</div></div>`});
+
+function show(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+
+function cross(){
+let a=document.getElementById('p1').value,b=document.getElementById('p2').value;
+let g1=[a[0],a[1]],g2=[b[0],b[1]], cells=[];
+g1.forEach(x=>g2.forEach(y=>cells.push([x,y].sort().join(''))));
+let counts={};cells.forEach(x=>counts[x]=(counts[x]||0)+1);
+let html='<table><tr><th>×</th><th>'+g2[0]+'</th><th>'+g2[1]+'</th></tr>';
+html+='<tr><th>'+g1[0]+'</th><td>'+cells[0]+'</td><td>'+cells[1]+'</td></tr>';
+html+='<tr><th>'+g1[1]+'</th><td>'+cells[2]+'</td><td>'+cells[3]+'</td></tr></table>';
+html+='<h3>Resultat</h3>';
+Object.entries(counts).forEach(([k,v])=>html+=`<p><b>${k}</b>: ${v*25}%</p>`);
+document.getElementById('crossResult').innerHTML=html;
+}
+
+const cards=terms.map(x=>[x[0],x[1]]);let ci=0,front=true;
+function renderCard(){document.getElementById('flashcard').textContent=front?cards[ci][0]:cards[ci][1]}
+function flipCard(){front=!front;renderCard()}
+function nextCard(){ci=(ci+1)%cards.length;front=true;renderCard()}
+
+const qs=[
+["Vad är DNA? ",["En typ av cell","Molekylen som innehåller genetisk information","En sjukdom","En könscell"],1],
+["Var finns kromosomerna i våra kroppsceller? ",["I cellkärnan","I huden","Utanför kroppen","I blodet"],0],
+["Vad bildar mitos?",["Fyra könsceller","Två genetiskt lika celler","En spermie","DNA"],1],
+["Vad är meios?",["Vanlig celldelning","Reduktionsdelning som bildar könsceller","En mutation","En DNA-analys"],1],
+["Vilken kombination är vanligast hos män?",["XX","XY","YY","XO"],1],
+["Vad är en mutation?",["En förändring i DNA","En kromosom","En proteinrik måltid","En celldelning"],0],
+["Vad betyder dominant?",["Att anlaget aldrig syns","Att det kan synas när en variant finns","Att DNA försvinner","Att cellen dör"],1],
+["Vad används ett korsningsschema till?",["För att räkna möjliga genotyper hos avkomma","För att mäta längd","För att rita celler","För att väga DNA"],0]
+];
+let qi=0,points=0,answered=false;
+function renderQuiz(){
+let q=qs[qi];answered=false;
+document.getElementById('quizBox').innerHTML=`<div class="quizq">${qi+1}. ${q[0]}</div>`+q[1].map((o,i)=>`<button class="option" onclick="answer(${i})">${o}</button>`).join('');
+document.getElementById('score').textContent=`Poäng: ${points}/${qs.length}`;
+}
+function answer(i){
+if(answered)return;answered=true;let q=qs[qi],opts=document.querySelectorAll('.option');
+if(i===q[2]){opts[i].classList.add('correct');points++}else{opts[i].classList.add('wrong');opts[q[2]].classList.add('correct')}
+setTimeout(()=>{qi++;if(qi<qs.length)renderQuiz();else document.getElementById('quizBox').innerHTML=`<h3>Klart! 🎉</h3><p>Du fick ${points}/${qs.length} rätt.</p><p>${points>=7?"Riktigt bra!":"Bra jobbat — repetera begreppen och försök igen."}</p>`;document.getElementById('score').textContent=`Poäng: ${points}/${qs.length}`},700);
+}
+function restartQuiz(){qi=0;points=0;renderQuiz()}
+renderCard();renderQuiz();
+document.getElementById('progress').style.width='25%';document.getElementById('progressText').textContent='25% – börja med begreppen och jobba dig vidare';
+</script>
+</body>
+</html>
